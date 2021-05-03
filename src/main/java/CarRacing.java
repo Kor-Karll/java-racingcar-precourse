@@ -5,6 +5,7 @@ public class CarRacing {
     Message message;
     int tryNumber;
     ArrayList<Car> cars;
+    final int MAX_CAR_NAME_LENGTH = 5;
 
     public CarRacing(Message message) {
         this.message = message;
@@ -13,7 +14,7 @@ public class CarRacing {
     }
 
     public boolean isRunning() {
-        return this.tryNumber == 0;
+        return this.tryNumber != 0;
     }
 
     public void start() {
@@ -22,6 +23,10 @@ public class CarRacing {
         createCars(carNames);
         message.getTryNumber();
         this.tryNumber = Integer.parseInt(getInput());
+
+        while (isRunning()) {
+            this.tryNumber--;
+        }
     }
 
     private String getInput() {
@@ -32,10 +37,16 @@ public class CarRacing {
         return input;
     }
 
+    private void addCar(String carName) {
+        if (carName.length() <= this.MAX_CAR_NAME_LENGTH) {
+            this.cars.add(new Car(carName));
+        }
+    }
+
     private void createCars(String carNames) {
         String[] carName = carNames.split(",");
         for (int i = 0; i < carName.length ; i++) {
-            this.cars.add(new Car(carName[i]));
+            addCar(carName[i]);
         }
     }
 }
