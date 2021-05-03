@@ -5,6 +5,7 @@ public class CarRacing {
     Message message;
     int tryNumber;
     ArrayList<Car> cars;
+    int biggestStep = 0;
     final int MAX_CAR_NAME_LENGTH = 5;
     final String DISPLAY_STEP = "-";
 
@@ -31,10 +32,22 @@ public class CarRacing {
         }
     }
 
+    private void setBiggestStep(int step) {
+        this.biggestStep = step;
+    }
+
+    private boolean checkBiggestStep(int step) {
+        return biggestStep <= step;
+    }
+
     private void printResult(Car car) {
         String carName = car.getName() + " : ";
         String step = "";
         int carStep = car.getStep();
+
+        if(checkBiggestStep(carStep)) {
+            setBiggestStep(carStep);
+        }
 
         for (int i = 0; i < carStep ; i++) {
             step += DISPLAY_STEP;
