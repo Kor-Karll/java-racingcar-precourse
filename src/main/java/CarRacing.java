@@ -6,6 +6,7 @@ public class CarRacing {
     int tryNumber;
     ArrayList<Car> cars;
     int biggestStep = 0;
+    String winner;
     final int MAX_CAR_NAME_LENGTH = 5;
     final String DISPLAY_STEP = "-";
 
@@ -30,10 +31,15 @@ public class CarRacing {
             racing();
             this.tryNumber--;
         }
+        System.out.println(this.winner + "가 최종 우승했습니다.");
     }
 
-    private void setBiggestStep(int step) {
+    private void setBiggestStep(String carName, int step) {
         this.biggestStep = step;
+        if (this.winner.length() != 0) {
+            this.winner += ", ";
+        }
+        this.winner += carName;
     }
 
     private boolean checkBiggestStep(int step) {
@@ -41,21 +47,22 @@ public class CarRacing {
     }
 
     private void printResult(Car car) {
-        String carName = car.getName() + " : ";
+        String carName = car.getName();
         String step = "";
         int carStep = car.getStep();
 
         if(checkBiggestStep(carStep)) {
-            setBiggestStep(carStep);
+            setBiggestStep(carName, carStep);
         }
 
         for (int i = 0; i < carStep ; i++) {
             step += DISPLAY_STEP;
         }
-        System.out.println(carName + step);
+        System.out.println(carName + " : " + step);
     }
 
     private void racing() {
+        winner = "";
         for (int i = 0; i < this.cars.size() ; i++) {
             Car car = cars.get(i);
             car.runCar();
