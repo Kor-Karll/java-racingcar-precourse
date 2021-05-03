@@ -20,6 +20,8 @@ public class CarRacing {
         message.getCarName();
         String carNames = getInput();
         createCars(carNames);
+        message.getTryNumber();
+        this.tryNumber = Integer.parseInt(getInput());
     }
 
     private String getInput() {
