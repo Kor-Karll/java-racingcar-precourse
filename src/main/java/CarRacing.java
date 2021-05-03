@@ -25,7 +25,15 @@ public class CarRacing {
         this.tryNumber = Integer.parseInt(getInput());
 
         while (isRunning()) {
+            racing();
             this.tryNumber--;
+        }
+    }
+
+    private void racing() {
+        for (int i = 0; i < this.cars.size() ; i++) {
+            Car car = cars.get(i);
+            car.runCar();
         }
     }
 
