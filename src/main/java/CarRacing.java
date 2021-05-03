@@ -6,6 +6,7 @@ public class CarRacing {
     int tryNumber;
     ArrayList<Car> cars;
     final int MAX_CAR_NAME_LENGTH = 5;
+    final String DISPLAY_STEP = "-";
 
     public CarRacing(Message message) {
         this.message = message;
@@ -30,10 +31,22 @@ public class CarRacing {
         }
     }
 
+    private void printResult(Car car) {
+        String carName = car.getName() + " : ";
+        String step = "";
+        int carStep = car.getStep();
+
+        for (int i = 0; i < carStep ; i++) {
+            step += DISPLAY_STEP;
+        }
+        System.out.println(carName + step);
+    }
+
     private void racing() {
         for (int i = 0; i < this.cars.size() ; i++) {
             Car car = cars.get(i);
             car.runCar();
+            printResult(car);
         }
     }
 
