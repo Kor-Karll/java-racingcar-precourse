@@ -1,5 +1,7 @@
 package racinggame;
 
+import nextstep.utils.Randoms;
+
 public class Engine {
     final int MIN_POWER = 3;
     final int MAX_POWER = 9;
@@ -9,7 +11,6 @@ public class Engine {
     }
 
     public int getRandomPower() {
-        double random = Math.random();
-        return (int)(random * MAX_POWER);
+        return Randoms.pickNumberInRange(0, MAX_POWER);
     }
 }
