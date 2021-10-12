@@ -12,6 +12,7 @@ public class CarRacing {
     int biggestStep = 0;
     String winner = "";
     final int MAX_CAR_NAME_LENGTH = 5;
+    boolean error = false;
 
     public CarRacing(Message message) {
         this.message = message;
@@ -27,6 +28,9 @@ public class CarRacing {
         message.getCarName();
         String carNames = getInput();
         createCars(carNames);
+        if (this.error) {
+            message.getErrorMessage();
+        }
         message.getTryNumber();
         this.tryNumber = Integer.parseInt(getInput());
 
@@ -84,7 +88,10 @@ public class CarRacing {
     private void addCar(String carName) {
         if (carName.length() <= this.MAX_CAR_NAME_LENGTH) {
             this.cars.add(new Car(carName));
+            return;
         }
+
+        this.error = true;
     }
 
     private void createCars(String carNames) {

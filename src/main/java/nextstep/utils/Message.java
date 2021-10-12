@@ -8,6 +8,11 @@ public class Message {
     private final String DISPLAY_STEP = "-";
     private final String WINNER_PRE_MESSAGE = "최종 우승자는 ";
     private final String WINNER_TAIL_MESSAGE = " 입니다.";
+    private final String ERROR_MESSAGE = "[ERROR]";
+
+    public void getErrorMessage() {
+        System.out.println(this.ERROR_MESSAGE);
+    }
 
     public void getCarName() {
         System.out.println(this.GET_CAR_NAME);
@@ -22,7 +27,7 @@ public class Message {
         StringBuilder step = new StringBuilder();
         int carStep = car.getStep();
 
-        for (int i = 0; i < carStep ; i++) {
+        for (int i = 0; i < carStep; i++) {
             step.append(DISPLAY_STEP);
         }
         System.out.println(carName + step);
