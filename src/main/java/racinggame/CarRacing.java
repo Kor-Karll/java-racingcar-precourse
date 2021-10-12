@@ -29,7 +29,14 @@ public class CarRacing {
         this.tryNumber = Integer.parseInt(getInput());
 
         while (isRunning()) {
+            racing();
             this.tryNumber--;
+        }
+    }
+
+    private void racing() {
+        for (Car car : this.cars) {
+            car.runCar();
         }
     }
 
