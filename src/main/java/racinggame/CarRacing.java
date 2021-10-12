@@ -14,4 +14,8 @@ public class CarRacing {
     public boolean isRunning() {
         return this.tryNumber == 0;
     }
+
+    public void start() {
+        message.getCarName();
+    }
 }
