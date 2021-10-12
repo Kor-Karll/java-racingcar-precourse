@@ -5,7 +5,8 @@ import racinggame.Car;
 public class Message {
     private final String GET_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분";
     private final String GET_TRY_NUMBER = "시도할 회수는 몇회인가요?";
-    final String DISPLAY_STEP = "-";
+    private final String DISPLAY_STEP = "-";
+    private final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
     public void getCarName() {
         System.out.println(this.GET_CAR_NAME);
@@ -24,5 +25,9 @@ public class Message {
             step.append(DISPLAY_STEP);
         }
         System.out.println(carName + step);
+    }
+
+    public void getWinner(String winner) {
+        System.out.println(winner + WINNER_MESSAGE);
     }
 }

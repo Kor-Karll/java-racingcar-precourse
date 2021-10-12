@@ -10,6 +10,7 @@ public class CarRacing {
     int tryNumber;
     ArrayList<Car> cars;
     int biggestStep = 0;
+    String winner = "";
     final int MAX_CAR_NAME_LENGTH = 5;
 
     public CarRacing(Message message) {
@@ -33,11 +34,34 @@ public class CarRacing {
             racing();
             this.tryNumber--;
         }
+        this.getWinner();
+        message.getWinner(this.winner);
     }
 
     private void setBiggestStep(Car car) {
         if (checkBiggestStep(car.getStep())) {
             this.biggestStep = car.getStep();
+        }
+    }
+
+    private void getWinner() {
+        for (Car car : this.cars) {
+            setWinnerComma();
+            setWinner(car);
+        }
+    }
+
+    private void setWinnerComma() {
+
+    }
+
+    private void setWinner(Car car) {
+        if (this.checkBiggestStep(car.getStep()) && this.winner.length() > 0) {
+            this.winner += ", ";
+        }
+
+        if (this.checkBiggestStep(car.getStep())) {
+            this.winner += car.getName();
         }
     }
 
